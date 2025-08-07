@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lugares</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- NAVIGATION BAR (fuera del header para sticky) -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="../index.html">
+          <img src="../assets/img/Boton_Inicio.png" alt="Inicio" />
+        </a>
+      </div>
+      <!-- Botón para móviles -->
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <ul>
+          <li><a href="../index.html">INICIO</a></li>
+          <li><a href="./galeria.html">GALERIA</a></li>
+          <li><a href="./lugares.html">LUGARES</a></li>
+          <li><a href="./ubicacion.html">UBICACION</a></li>
+          <li><a href="./contacto.html">CONTACTO</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+            <header>
+    <!-- HERO -->
+<div class="Hero_lugares">
+  <img src="../assets/img/Hero_lugares.png" alt="hero">
+</div>
+    </header>
+
+<main>
+     <h1 class="claselugares" id="idlugares">Lugares</h1>
+  <section>
+   
+    <p>Aqui un video con todos los lugares.</p>
+
+    <iframe width="640" height="360" 
+    src="https://www.youtube.com/embed/xnqtajrsav0"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-container">
+    <p>&copy; 2025 San José de Gracia, Michoacán. Todos los derechos reservados.</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/p/San-Jos%C3%A9-de-Gracia-Michoac%C3%A1n-100072470735665/?locale=es_LA" target="_blank" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/explore/locations/982222233/san-jose-de-gracia-michoacan/?hl=es-la" target="_blank" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+  <!-- Script para menú hamburguesa -->
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

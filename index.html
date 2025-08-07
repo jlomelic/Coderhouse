@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <!-- NAVIGATION BAR (fuera del header para sticky real) -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="./assets/img/Boton_inicio2.png" alt="Inicio" />
+        </a>
+      </div>
+      <!-- Botón para móviles -->
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <ul>
+          <li><a href="index.html">INICIO</a></li>
+          <li><a href="./pages/galeria.html">GALERIA</a></li>
+          <li><a href="./pages/lugares.html">LUGARES</a></li>
+          <li><a href="./pages/ubicacion.html">UBICACION</a></li>
+          <li><a href="./pages/contacto.html">CONTACTO</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<header>
+  <!-- HERO -->
+  <div class="heroInicio">
+    <img src="./assets/img/heroprincipal.png" class="img-fluid w-100" alt="hero" />
+  </div>
+</header>
+
+  <main>
+    <h1>HISTORIA</h1>
+    <section id="fondoPrincipal">
+      <img src="./assets/img/historia.webp" alt="Pueblo de San Jose" />
+      <p>
+        San José de Gracia es una comunidad ubicada en el municipio de Marcos Castellanos, en el estado de Michoacán. Su origen se remonta al siglo XIX, cuando era conocido como “El Llano de la Cruz”, una estancia ganadera en una zona de tierras fértiles y clima templado.
+        La fundación oficial del pueblo ocurrió el 19 de marzo de 1888, cuando, bajo la iniciativa del diácono Esteban Zepeda y con el respaldo del entonces obispo José María Cázares y Martínez, se estableció la comunidad con el nombre de San José de Gracia, en honor al santo patrono.
+        A lo largo del siglo XX, el pueblo pasó por varios cambios administrativos. En 1909 fue incorporado al municipio de Jiquilpan bajo el nombre de “Ornelas”, pero en 1967 fue designado cabecera del nuevo municipio de Marcos Castellanos. Finalmente, en 1981 recuperó oficialmente el nombre de San José de Gracia.
+        Este pueblo adquirió notoriedad nacional gracias al historiador Luis González y González, originario del lugar, quien publicó en 1968 el libro "Pueblo en vilo", una obra pionera en la microhistoria. El libro narra la vida cotidiana, los cambios sociales y las memorias colectivas de la comunidad, convirtiéndose en un referente para los estudios históricos de pequeñas poblaciones en México.
+        San José de Gracia no solo conserva su riqueza histórica, sino también su identidad cultural, reflejada en sus tradiciones, su gente y la tranquilidad de sus calles. Es, sin duda, un testimonio vivo del México profundo.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 San José de Gracia, Michoacán. Todos los derechos reservados.</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/p/San-Jos%C3%A9-de-Gracia-Michoac%C3%A1n-100072470735665/?locale=es_LA" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/explore/locations/982222233/san-jose-de-gracia-michoacan/?hl=es-la" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script para menú hamburguesa -->
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
