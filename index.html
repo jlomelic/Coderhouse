@@ -4,9 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Inicio</title>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
 </head>
 <body>
   <!-- NAVIGATION BAR (fuera del header para sticky real) -->
@@ -17,10 +20,12 @@
           <img src="./assets/img/Boton_inicio2.png" alt="Inicio" />
         </a>
       </div>
+
       <!-- Botón para móviles -->
       <button class="menu-toggle" aria-label="Abrir menú">
         <i class="fa fa-bars"></i>
       </button>
+
       <div class="nav-links">
         <ul>
           <li><a href="index.html">INICIO</a></li>
@@ -33,18 +38,21 @@
     </div>
   </nav>
 
-<header>
-  <!-- HERO -->
-  <div class="heroInicio">
-    <img src="./assets/img/heroprincipal.png" class="img-fluid w-100" alt="hero" />
-  </div>
-</header>
-
+  <header>
+    <!-- HERO con gradiente + animate.css + AOS -->
+    <div class="heroInicio hero-gradient animate__animated animate__fadeIn" data-aos="fade-up">
+      <img src="./assets/img/heroprincipal.png" class="img-fluid w-100" alt="hero" />
+      <div class="hero-overlay" data-aos="zoom-in" data-aos-delay="150">
+        <h1 class="hero-title animate__animated animate__fadeInUp">HISTORIA</h1>
+      </div>
+    </div>
+  </header>
+     <h2 class="titulo-separador">Historia</h2>
   <main>
-    <h1>HISTORIA</h1>
-    <section id="fondoPrincipal">
-      <img src="./assets/img/historia.webp" alt="Pueblo de San Jose" />
-      <p>
+    <section id="fondoPrincipal" class="container py-4" data-aos="fade-right">
+      <img src="./assets/img/historia.webp" alt="Pueblo de San Jose"
+           class="tilt-3d img-fluid mb-3" data-aos="flip-left" data-aos-delay="200" />
+      <p class="reveal-text" data-aos="fade-up" data-aos-delay="250">
         San José de Gracia es una comunidad ubicada en el municipio de Marcos Castellanos, en el estado de Michoacán. Su origen se remonta al siglo XIX, cuando era conocido como “El Llano de la Cruz”, una estancia ganadera en una zona de tierras fértiles y clima templado.
         La fundación oficial del pueblo ocurrió el 19 de marzo de 1888, cuando, bajo la iniciativa del diácono Esteban Zepeda y con el respaldo del entonces obispo José María Cázares y Martínez, se estableció la comunidad con el nombre de San José de Gracia, en honor al santo patrono.
         A lo largo del siglo XX, el pueblo pasó por varios cambios administrativos. En 1909 fue incorporado al municipio de Jiquilpan bajo el nombre de “Ornelas”, pero en 1967 fue designado cabecera del nuevo municipio de Marcos Castellanos. Finalmente, en 1981 recuperó oficialmente el nombre de San José de Gracia.
@@ -54,7 +62,7 @@
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" data-aos="fade-up">
     <div class="footer-container">
       <p>&copy; 2025 San José de Gracia, Michoacán. Todos los derechos reservados.</p>
       <div class="social-icons">
@@ -68,13 +76,39 @@
     </div>
   </footer>
 
-  <!-- Script para menú hamburguesa -->
+  <!--menú hamburguesa + cerrar al hacer click fuera -->
   <script>
     const toggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+      });
+
+      // Cerrar al click fuera
+      document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && e.target !== toggle) {
+          navLinks.classList.remove('active');
+        }
+      });
+
+      // Cerrar al elegir un enlace
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => navLinks.classList.remove('active'));
+      });
+    }
+  </script>
+
+  <!-- AOS.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 900,
+      easing: 'ease-out',
+      once: true,
+      offset: 80
     });
   </script>
 </body>

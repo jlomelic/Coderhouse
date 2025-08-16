@@ -248,13 +248,12 @@ h1 { color: rebeccapurple; }
   }
 }
 
-/* ====== Hover especial al primer item del navbar (pseudoclase) ====== */
 .nav-links ul li:first-child a {
   font-weight: bold;
   color: #2c3e50;
 }
 
-/* ====== Colores por red social con @each + map (sin cambiar HTML) ====== */
+/* ====== Colores pora redes sociales ====== */
 $social-colors: (
   "Facebook": #1877f2,
   "Instagram": #e4405f
@@ -264,4 +263,71 @@ $social-colors: (
   @each $label, $c in $social-colors {
     a[aria-label="#{$label}"]:hover { color: $c; }
   }
+}
+
+/* ==== HERO con gradiente de superposición ==== */
+.hero-gradient {
+  position: relative;
+  isolation: isolate;
+}
+.hero-gradient::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,.05) 40%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-gradient .hero-overlay {
+  position: absolute; inset: 0;
+  display: grid; place-items: end start;
+  padding: 24px;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.45);
+}
+.hero-title { letter-spacing: .5px; }
+
+/* ==== Ejes y transformaciones 3D ==== */
+.tilt-3d {
+  transform-style: preserve-3d;
+  perspective: 900px;                 
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.tilt-3d:hover {
+  transform: rotateX(6deg) rotateY(-8deg) translateZ(10px);
+}
+
+/* ==== Transiciones y estados en la imagen de la sección ==== */
+#fondoPrincipal img {
+  transition: filter .35s ease, transform .35s ease;
+}
+#fondoPrincipal img:hover {
+  filter: saturate(1.15) contrast(1.05);
+  transform: scale(1.02);
+}
+
+/* ==== @keyframes ==== */
+@keyframes reveal {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes floatY {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.reveal-text {
+  animation: reveal .6s ease-out both .1s; /* duración + timing + fill + delay */
+}
+
+.nav-links a {
+  transition: color .25s ease-in, transform .25s ease-out .05s;
+}
+.nav-links a:hover { transform: translateY(-1px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate__animated { animation: none !important; }
+  [data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .tilt-3d, #fondoPrincipal img { transition: none !important; }
 }
