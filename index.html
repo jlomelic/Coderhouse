@@ -22,9 +22,10 @@
       </div>
 
       <!-- Botón para móviles -->
-      <button class="menu-toggle" aria-label="Abrir menú">
-        <i class="fa fa-bars"></i>
-      </button>
+<button class="menu-toggle" aria-label="Abrir menú">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
 
       <div class="nav-links">
         <ul>
@@ -77,29 +78,28 @@
   </footer>
 
   <!--menú hamburguesa + cerrar al hacer click fuera -->
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
 
-    if (toggle && navLinks) {
-      toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navLinks.classList.toggle('active');
-      });
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+    });
 
-      // Cerrar al click fuera
-      document.addEventListener('click', (e) => {
-        if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && e.target !== toggle) {
-          navLinks.classList.remove('active');
-        }
-      });
+    document.addEventListener('click', (e) => {
+      const clickDentro = navLinks.contains(e.target) || toggle.contains(e.target);
+      if (!clickDentro) navLinks.classList.remove('active');
+    });
 
-      // Cerrar al elegir un enlace
-      navLinks.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => navLinks.classList.remove('active'));
-      });
-    }
-  </script>
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => navLinks.classList.remove('active'))
+    );
+  }
+</script>
+
+
 
   <!-- AOS.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

@@ -62,6 +62,9 @@ $theme: light !default;
     display: block;
   }
 }
+@mixin mq-up($key) {
+  @media (min-width: map-get($breakpoints, $key)) { @content; }
+}
 
 /* ====== @extend ====== */
 %no-list { list-style: none; margin: 0; padding: 0; }
@@ -83,8 +86,7 @@ $spacer: 8px;
 @for $i from 1 through 5 {
   .mt-#{$i} { margin-top: $spacer * $i !important; }
 }
-
-/* ====== NAVBAR ====== */
+/* ====== NAVBAR (mobile-first, único) ====== */
 nav {
   position: sticky; top: 0;
   z-index: map-get($z, nav);
@@ -92,97 +94,71 @@ nav {
   box-shadow: 0 2px 5px map-get($colors, shadow);
   padding: 10px 0;
 
-  .nav-container {
+  .nav-container{
     @include container(map-get($breakpoints, xl));
     @include flex(space-between, center);
     height: 70px;
+    position: relative; // para posicionar el menú absoluto
 
-    .nav-logo {
+    .nav-logo{
       @include flex(flex-start, stretch);
       height: 70px; max-width: 140px;
 
-      img {
-        max-width: 120px;
-        height: auto;
-        object-fit: contain;
-        display: block;
-      }
+      img{ max-width: 120px; height: auto; object-fit: contain; display:block; }
     }
 
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: map-get($colors, text);
+    /* MOBILE (por defecto) */
+    .menu-toggle{
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      font-size: 28px; color: map-get($colors, text);
+      position: absolute; right: 20px; top: 20px;
+      z-index: map-get($z, burger);
     }
 
-    .nav-links {
-      flex-grow: 1;
-      @include flex(center, center);
+    .nav-links{
+      position: absolute; top: 70px; right: 10px;
+      width: 180px; padding: 10px 15px;
+      background: map-get($colors, white);
+      border: 1px solid map-get($colors, border);
+      border-radius: 8px; box-shadow: 0 4px 6px map-get($colors, shadow);
+      display: none; z-index: map-get($z, menu); text-align: center;
 
-      ul {
+      &.active{ display: block; }
+
+      ul{
         @extend %no-list;
-        display: flex;
-        gap: 80px;
-        padding: 0;
-        margin: 0;
-        text-align: center;
+        display: flex; flex-direction: column; gap: 8px;
+        margin: 0; padding: 0;
       }
+      li{ text-align: center; }
 
-      a {
+      a{
         @extend %link-reset;
-        font-weight: bold;
-        transition: color .3s ease;
-
-        &:hover { color: map-get($colors, link-hover); }
+        display: block; font-weight: bold; font-size: 14px; padding: 6px 0;
+        transition: color .3s ease, transform .25s ease;
+        &:hover{ color: map-get($colors, link-hover); transform: translateY(-1px); }
       }
     }
   }
 
-  /* ====== Responsive (móvil) ====== */
-  @include mq-down(md) {
-    .nav-container { position: relative; padding: 0 20px; }
+  /* DESKTOP (≥ md) */
+  @include mq-up(md){
+    .nav-container{
+      .menu-toggle{ display: none; }
 
-    .menu-toggle {
-      display: block;
-      position: absolute;
-      right: 20px; top: 20px;
-      z-index: map-get($z, burger);
-      font-size: 30px;
-    }
+      .nav-links{
+        position: static; width: auto; padding: 0;
+        background: transparent; border: 0; box-shadow: none; border-radius: 0;
+        display: flex; align-items: center;
 
-    .nav-links {
-      position: absolute;
-      top: 70px; right: 10px;
-      background-color: map-get($colors, white);
-      border: 1px solid map-get($colors, border);
-      box-shadow: 0 4px 6px map-get($colors, shadow);
-      padding: 10px 15px;
-      display: none;
-      z-index: map-get($z, menu);
-      width: 180px;
-      border-radius: 8px;
+        &.active{ display: flex; } // coherencia
 
-      &.active { display: block; }
-
-      ul {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      li { text-align: center; }
-
-      a {
-        display: block;
-        font-size: 14px;
-        padding: 4px 0;
+        ul{ flex-direction: row; gap: 80px; }
+        a{ font-size: 1rem; padding: 0; }
       }
     }
-
-    .nav-logo { max-width: 120px; }
   }
 }
 
@@ -331,3 +307,15 @@ $social-colors: (
   [data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; }
   .tilt-3d, #fondoPrincipal img { transition: none !important; }
 }
+
+/* Altura responsiva del HERO */
+@include mq-down(lg) {  // < 992px
+  .heroInicio, .Hero_contacto, .Hero_galeria, .Hero_lugares, .Hero_ubicacion { height: 60vh; }
+}
+@include mq-down(md) {  // < 768px
+  .heroInicio, .Hero_contacto, .Hero_galeria, .Hero_lugares, .Hero_ubicacion { height: 55vh; }
+}
+@include mq-down(sm) {  // < 576px
+  .heroInicio, .Hero_contacto, .Hero_galeria, .Hero_lugares, .Hero_ubicacion { height: 48vh; }
+}
+

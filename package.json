@@ -1,0 +1,16 @@
+{
+  "name": "preentrega1-lomeli",
+  "version": "1.0.0",
+  "description": "Proyecto de PreEntrega 1",
+  "main": "index.js",
+  "scripts": {
+    "sass:dev": "sass --watch SCSS:css --style=expanded --source-map",
+    "sass:build": "sass SCSS:css --no-error-css --style=compressed --source-map"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.92.1"
+  }
+}

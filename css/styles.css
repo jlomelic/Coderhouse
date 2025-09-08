@@ -1,7 +1,10 @@
 @charset "UTF-8";
 /* ====== Fuentes ====== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
+/* ====== Variables & Maps ====== */
+/* Tema simple por condicional */
+/* ====== Mixins ====== */
+/* ====== @extend ====== */
 nav .nav-container .nav-links ul {
   list-style: none;
   margin: 0;
@@ -20,7 +23,7 @@ nav .nav-container .nav-links a {
   padding: 0;
 }
 
-/* ====== Body ====== */
+/* ====== Body (condicional por tema) ====== */
 body {
   font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
   color: #333;
@@ -28,7 +31,7 @@ body {
   background-color: bisque;
 }
 
-/* ====== Tipografía ====== */
+/* ====== Tipografía con @for (utilidades rápidas) ====== */
 .mt-1 {
   margin-top: 8px !important;
 }
@@ -49,7 +52,7 @@ body {
   margin-top: 40px !important;
 }
 
-/* ====== NAVBAR ====== */
+/* ====== NAVBAR (mobile-first, único) ====== */
 nav {
   position: sticky;
   top: 0;
@@ -57,7 +60,6 @@ nav {
   background-color: rgba(245, 245, 245, 0.6941176471);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
-  /* ====== Responsive (móvil) ====== */
 }
 nav .nav-container {
   max-width: 1200px;
@@ -67,6 +69,7 @@ nav .nav-container {
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  position: relative;
 }
 nav .nav-container .nav-logo {
   display: flex;
@@ -81,126 +84,91 @@ nav .nav-container .nav-logo img {
   object-fit: contain;
   display: block;
 }
+nav .nav-container {
+  /* MOBILE (por defecto) */
+}
 nav .nav-container .menu-toggle {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
-  font-size: 28px;
   cursor: pointer;
+  font-size: 28px;
   color: #333;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1100;
 }
 nav .nav-container .nav-links {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  width: 180px;
+  padding: 10px 15px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1001;
+  text-align: center;
+}
+nav .nav-container .nav-links.active {
+  display: block;
 }
 nav .nav-container .nav-links ul {
   display: flex;
-  gap: 80px;
-  padding: 0;
+  flex-direction: column;
+  gap: 8px;
   margin: 0;
+  padding: 0;
+}
+nav .nav-container .nav-links li {
   text-align: center;
 }
 nav .nav-container .nav-links a {
+  display: block;
   font-weight: bold;
-  transition: color 0.3s ease;
+  font-size: 14px;
+  padding: 6px 0;
+  transition: color 0.3s ease, transform 0.25s ease;
 }
 nav .nav-container .nav-links a:hover {
   color: #007bff;
+  transform: translateY(-1px);
 }
-@media (max-width: 768px) {
-  nav .nav-container {
-    position: relative;
-    padding: 0 20px;
-  }
-  nav .menu-toggle {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    z-index: 1100;
-    font-size: 30px;
-  }
-  nav .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px 15px;
+nav {
+  /* DESKTOP (≥ md) */
+}
+@media (min-width: 768px) {
+  nav .nav-container .menu-toggle {
     display: none;
-    z-index: 1001;
-    width: 180px;
-    border-radius: 8px;
   }
-  nav .nav-links.active {
-    display: block;
-  }
-  nav .nav-links ul {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  nav .nav-links li {
-    text-align: center;
-  }
-  nav .nav-links a {
-    display: block;
-    font-size: 14px;
-    padding: 4px 0;
-  }
-  nav .nav-logo {
-    max-width: 120px;
-  }
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block !important;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    z-index: 1100;
-  }
-
-  /* Oculto SIEMPRE el menú en móvil */
-  .nav-links {
-    display: none !important;
-    position: absolute;
-    top: 70px;
-    right: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 6px rgba(0,0,0,.1);
-    padding: 10px 15px;
-    width: 180px;
-    border-radius: 8px;
-    z-index: 1001;
-  }
-
-  /* Lo muestro solo cuando tenga .active */
-  .nav-links.active {
-    display: block !important;
-  }
-
-  .nav-links ul {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin: 0;
+  nav .nav-container .nav-links {
+    position: static;
+    width: auto;
     padding: 0;
-    list-style: none;
-    text-align: center;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
   }
-
-  .nav-links ul li a {
-    display: block;
-    font-size: 14px;
-    padding: 4px 0;
+  nav .nav-container .nav-links.active {
+    display: flex;
+  }
+  nav .nav-container .nav-links ul {
+    flex-direction: row;
+    gap: 80px;
+  }
+  nav .nav-container .nav-links a {
+    font-size: 1rem;
+    padding: 0;
   }
 }
-
 
 /* ====== HERO ====== */
 .heroInicio {
@@ -220,7 +188,7 @@ nav .nav-container .nav-links a:hover {
 }
 .Hero_contacto img {
   width: 100%;
-  height: 100%; 
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -231,7 +199,7 @@ nav .nav-container .nav-links a:hover {
 }
 .Hero_galeria img {
   width: 100%;
-  height: 100%; 
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -242,7 +210,7 @@ nav .nav-container .nav-links a:hover {
 }
 .Hero_lugares img {
   width: 100%;
-  height: 100%; 
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -253,7 +221,7 @@ nav .nav-container .nav-links a:hover {
 }
 .Hero_ubicacion img {
   width: 100%;
-  height: 100%; 
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -321,13 +289,12 @@ h1 {
   transform: scale(1.2);
 }
 
-/* ====== Hover especial al primer item del navbar ====== */
 .nav-links ul li:first-child a {
   font-weight: bold;
   color: #2c3e50;
 }
 
-/* ====== Colores por red social ====== */
+/* ====== Colores pora redes sociales ====== */
 .social-icons a[aria-label=Facebook]:hover {
   color: #1877f2;
 }
@@ -335,3 +302,119 @@ h1 {
   color: #e4405f;
 }
 
+/* ==== HERO con gradiente de superposición ==== */
+.hero-gradient {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.05) 40%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-gradient .hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: end start;
+  padding: 24px;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.hero-title {
+  letter-spacing: 0.5px;
+}
+
+/* ==== Ejes y transformaciones 3D ==== */
+.tilt-3d {
+  transform-style: preserve-3d;
+  perspective: 900px;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tilt-3d:hover {
+  transform: rotateX(6deg) rotateY(-8deg) translateZ(10px);
+}
+
+/* ==== Transiciones y estados en la imagen de la sección ==== */
+#fondoPrincipal img {
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+#fondoPrincipal img:hover {
+  filter: saturate(1.15) contrast(1.05);
+  transform: scale(1.02);
+}
+
+/* ==== @keyframes ==== */
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes floatY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.reveal-text {
+  animation: reveal 0.6s ease-out both 0.1s; /* duración + timing + fill + delay */
+}
+
+.nav-links a {
+  transition: color 0.25s ease-in, transform 0.25s ease-out 0.05s;
+}
+
+.nav-links a:hover {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate__animated {
+    animation: none !important;
+  }
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .tilt-3d, #fondoPrincipal img {
+    transition: none !important;
+  }
+}
+/* Altura responsiva del HERO */
+@media (max-width: 992px) {
+  .heroInicio, .Hero_contacto, .Hero_galeria, .Hero_lugares, .Hero_ubicacion {
+    height: 60vh;
+  }
+}
+@media (max-width: 768px) {
+  .heroInicio, .Hero_contacto, .Hero_galeria, .Hero_lugares, .Hero_ubicacion {
+    height: 55vh;
+  }
+}
+@media (max-width: 576px) {
+  .heroInicio, .Hero_contacto, .Hero_galeria, .Hero_lugares, .Hero_ubicacion {
+    height: 48vh;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

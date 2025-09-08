@@ -18,9 +18,10 @@
         </a>
       </div>
       <!-- Botón para móviles -->
-      <button class="menu-toggle" aria-label="Abrir menú">
-        <i class="fa fa-bars"></i>
-      </button>
+<button class="menu-toggle" aria-label="Abrir menú">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
       <div class="nav-links">
         <ul>
           <li><a href="../index.html">INICIO</a></li>
@@ -67,14 +68,27 @@ Desde la plaza principal hasta sus celebraciones religiosas, cada imagen refleja
     </div>
   </div>
 </footer>
-  <!-- Script para menú hamburguesa -->
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+  <!--menú hamburguesa + cerrar al hacer click fuera -->
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
 
-    toggle.addEventListener('click', () => {
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       navLinks.classList.toggle('active');
     });
-  </script>
+
+    document.addEventListener('click', (e) => {
+      const clickDentro = navLinks.contains(e.target) || toggle.contains(e.target);
+      if (!clickDentro) navLinks.classList.remove('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => navLinks.classList.remove('active'))
+    );
+  }
+</script>
+
 </body>
 </html>
