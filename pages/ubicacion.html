@@ -18,9 +18,9 @@
         </a>
       </div>
       <!-- Botón para móviles -->
-<button class="menu-toggle" aria-label="Abrir menú">
-  <i class="fa-solid fa-bars"></i>
-</button>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
       <div class="nav-links">
         <ul>
@@ -33,55 +33,73 @@
       </div>
     </div>
   </nav>
-    <header>
-          <!-- HERO -->
-<div class="Hero_ubicacion">
-    <img src="../assets/img/Hero_ubicacion.png" alt="hero">
-</div>
-    </header>
 
-<main>
-     <h1>Ubicacion</h1>
-  <section>
-    <img src="../assets/img/Ubicacion.png" alt="Dibujo bote con pasajeros en el mar">
-    <p>San José de Gracia es una comunidad ubicada en el municipio de Marcos Castellanos, al occidente del estado de Michoacán, México. Se localiza cerca de los límites con Jalisco, a aproximadamente 45 kilómetros al sur de Sahuayo y a unos 15 kilómetros de la carretera federal 110 que conecta Jiquilpan con Colima.
-Su posición geográfica privilegiada entre colinas y tierras agrícolas le otorga un clima templado y paisajes típicos de la región ciénega.</p>
-  </section>
-</main>
-<footer class="footer">
-  <div class="footer-container">
-    <p>&copy; 2025 San José de Gracia, Michoacán. Todos los derechos reservados.</p>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/p/San-Jos%C3%A9-de-Gracia-Michoac%C3%A1n-100072470735665/?locale=es_LA" target="_blank" aria-label="Facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-      </a>
-      <a href="https://www.instagram.com/explore/locations/982222233/san-jose-de-gracia-michoacan/?hl=es-la" target="_blank" aria-label="Instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
+  <header>
+    <!-- HERO -->
+    <div class="Hero_ubicacion">
+      <img src="../assets/img/Hero_ubicacion.png" alt="hero">
     </div>
-  </div>
-</footer> 
+  </header>
+
+  <main>
+    <h1>Ubicacion</h1>
+    <section class="container my-4">
+      <p>
+        San José de Gracia es una comunidad ubicada en el municipio de Marcos Castellanos, al occidente del estado de Michoacán, México. 
+        Se localiza cerca de los límites con Jalisco, a aproximadamente 45 kilómetros al sur de Sahuayo y a unos 15 kilómetros de la carretera federal 110 que conecta Jiquilpan con Colima.
+        <br><br>
+        Su posición geográfica privilegiada entre colinas y tierras agrícolas le otorga un clima templado y paisajes típicos de la región ciénega.
+      </p>
+
+      <!-- MAPA DINÁMICO -->
+      <div class="my-4">
+        <iframe 
+          src="https://www.google.com/maps?q=San+José+de+Gracia,+Marcos+Castellanos,+Michoacán&z=14&output=embed" 
+          width="100%" 
+          height="400" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 San José de Gracia, Michoacán. Todos los derechos reservados.</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/p/San-Jos%C3%A9-de-Gracia-Michoac%C3%A1n-100072470735665/?locale=es_LA" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/explore/locations/982222233/san-jose-de-gracia-michoacan/?hl=es-la" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </footer> 
+
   <!--menú hamburguesa + cerrar al hacer click fuera -->
-<script>
-  const toggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navLinks.classList.toggle('active');
-    });
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+      });
 
-    document.addEventListener('click', (e) => {
-      const clickDentro = navLinks.contains(e.target) || toggle.contains(e.target);
-      if (!clickDentro) navLinks.classList.remove('active');
-    });
+      document.addEventListener('click', (e) => {
+        const clickDentro = navLinks.contains(e.target) || toggle.contains(e.target);
+        if (!clickDentro) navLinks.classList.remove('active');
+      });
 
-    navLinks.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => navLinks.classList.remove('active'))
-    );
-  }
-</script>
-
+      navLinks.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => navLinks.classList.remove('active'))
+      );
+    }
+  </script>
 </body>
 </html>
