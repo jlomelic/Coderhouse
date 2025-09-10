@@ -31,7 +31,7 @@ body {
   background-color: bisque;
 }
 
-/* ====== Tipografía con @for (utilidades rápidas) ====== */
+/* ====== Tipografía con @for ====== */
 .mt-1 {
   margin-top: 8px !important;
 }
@@ -52,7 +52,7 @@ body {
   margin-top: 40px !important;
 }
 
-/* ====== NAVBAR (mobile-first, único) ====== */
+/* ====== NAVBAR (mobile-first) ====== */
 nav {
   position: sticky;
   top: 0;
@@ -85,7 +85,7 @@ nav .nav-container .nav-logo img {
   display: block;
 }
 nav .nav-container {
-  /* MOBILE (por defecto) */
+  /* MOBILE */
 }
 nav .nav-container .menu-toggle {
   display: inline-flex;
@@ -140,7 +140,7 @@ nav .nav-container .nav-links a:hover {
   transform: translateY(-1px);
 }
 nav {
-  /* DESKTOP (≥ md) */
+  /* DESKTOP */
 }
 @media (min-width: 768px) {
   nav .nav-container .menu-toggle {
@@ -294,7 +294,7 @@ h1 {
   color: #2c3e50;
 }
 
-/* ====== Colores pora redes sociales ====== */
+/* ====== Colores para redes sociales ====== */
 .social-icons a[aria-label=Facebook]:hover {
   color: #1877f2;
 }

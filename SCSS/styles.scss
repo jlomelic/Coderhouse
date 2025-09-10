@@ -81,12 +81,12 @@ body {
   background-color: if($theme == light, bisque, #121212);
 }
 
-/* ====== Tipografía con @for (utilidades rápidas) ====== */
+/* ====== Tipografía con @for ====== */
 $spacer: 8px;
 @for $i from 1 through 5 {
   .mt-#{$i} { margin-top: $spacer * $i !important; }
 }
-/* ====== NAVBAR (mobile-first, único) ====== */
+/* ====== NAVBAR (mobile-first) ====== */
 nav {
   position: sticky; top: 0;
   z-index: map-get($z, nav);
@@ -107,7 +107,7 @@ nav {
       img{ max-width: 120px; height: auto; object-fit: contain; display:block; }
     }
 
-    /* MOBILE (por defecto) */
+    /* MOBILE */
     .menu-toggle{
       display: inline-flex;
       align-items: center; justify-content: center;
@@ -143,7 +143,7 @@ nav {
     }
   }
 
-  /* DESKTOP (≥ md) */
+  /* DESKTOP */
   @include mq-up(md){
     .nav-container{
       .menu-toggle{ display: none; }
@@ -229,7 +229,7 @@ h1 { color: rebeccapurple; }
   color: #2c3e50;
 }
 
-/* ====== Colores pora redes sociales ====== */
+/* ====== Colores para redes sociales ====== */
 $social-colors: (
   "Facebook": #1877f2,
   "Instagram": #e4405f
