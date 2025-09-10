@@ -1,12 +1,14 @@
-# 📌 Coderhouse - Proyecto Web San José de Gracia
+# 🌐 Proyecto: San José de Gracia – Sitio Web
 
-
-Este proyecto es una página web informativa sobre **San José de Gracia, Michoacán**, creada como parte del entregable del curso de **Desarrollo Web Full Stack (Coderhouse)**.
-
+## 📖 Descripción  
+Este proyecto es un sitio web informativo sobre **San José de Gracia, Michoacán**, desarrollado como parte de la entrega final del curso.  
+El objetivo es aplicar buenas prácticas de **HTML5, CSS3, SCSS, SEO y responsive design**, además de implementar despliegues en servidores gratuitos.  
 
 ---
 
+## 📂 Estructura del Proyecto  
 
+<<<<<<< HEAD
 ## 🚀 Demo
 🔗 [Ver página publicada en GitHub Pages](https://jlomelic.github.io/Coderhouse/)
 Netlify https://entrega1-lomeli.netlify.app/
@@ -29,59 +31,73 @@ Netlify https://entrega1-lomeli.netlify.app/
 ## 📂 Estructura del proyecto
 ```bash
 Coderhouse/
+=======
+```
+PreEntrega1-Lomeli/
+>>>>>>> 54a0beb (Actualizacion de Readme)
 │── index.html
 │── pages/
-│ ├── galeria.html
-│ ├── lugares.html
-│ ├── ubicacion.html
-│ └── contacto.html
+│   ├── galeria.html
+│   ├── lugares.html
+│   ├── ubicacion.html
+│   ├── contacto.html
 │── css/
-│ └── styles.css
+│   └── styles.css
 │── scss/
-│ └── styles.scss
+│   └── styles.scss
 │── assets/
-│ ├── img/
-│ └── videos/
-└── README.md
+│   └── img/
+│── wireframe/   (opcional - documentación visual)
+│── package.json
+│── README.md
 ```
 
+---
+
+## 🎨 Tecnologías Utilizadas  
+
+- **HTML5** → estructura semántica de las páginas.  
+- **CSS3 + SCSS (SASS)** → estilos modulares y optimizados.  
+  - Variables  
+  - Mixins (`mq-up`, `mq-down`, `flex`, `container`, `hero`)  
+  - Anidación  
+  - Extend (`%no-list`, `%link-reset`)  
+- **Bootstrap 5.3** → componentes base.  
+- **JavaScript (vanilla)** → interacción menú hamburguesa.  
+- **Font Awesome** → íconos sociales.  
 
 ---
 
+## ✅ Requerimientos Cubiertos  
 
-## ✨ Funcionalidades principales
-✅ Página de inicio con **hero responsive**
-✅ **Menú de navegación sticky** con versión hamburguesa en móviles
-✅ **Galería de imágenes** con CSS Grid
-✅ **Animaciones** con Animate.css y AOS
-✅ **Footer con enlaces a redes sociales**
-✅ Preparado para **GitHub Pages**
+### 📄 HTML  
+- 5 páginas (Inicio, Galería, Lugares, Ubicación, Contacto).  
+- Imágenes con `alt` descriptivo.  
+- Jerarquía correcta de encabezados (`h1 > h2 > h3`).  
+- Meta title + meta description únicos por página.  
 
----
+### 🎨 SCSS  
+- Uso de **variables** para colores y z-index.  
+- **Anidación** para elementos dentro de `nav`, `footer`, etc.  
+- **Mixins** para media queries y layouts reutilizables.  
+- **Extend** para reset de listas y enlaces.  
 
-## ⚡ Instalación y uso local
-1. Clonar el repositorio:
-```bash
-git clone https://github.com/jlomelic/Coderhouse.git
-```
-2. Acceder al directorio:
-```bash
-cd Coderhouse
-```
-3. Abrir `index.html` en el navegador
+### 🔎 SEO  
+- Imágenes optimizadas (< 1MB).  
+- Titles completos y descriptivos.  
+- Meta descriptions personalizadas.  
+- Jerarquía de encabezados revisada.  
+- Favicon agregado (pendiente si aún no lo subes).  
 
-
----
-
-
-## 📌 Autor
-👨‍💻 **José Jair Lomelí Cardenas**
-📧 jairlomelidt@gmail.com
-🔗 [GitHub](https://github.com/jlomelic)
-
+### 📱 Optimización Responsive  
+- Hero section adaptable con breakpoints (`sm`, `md`, `lg`, `xl`).  
+- Menú hamburguesa funcional en móviles.  
+- Grid para galería con `auto-fit`.  
 
 ---
 
+## 🚀 Despliegues  
 
-## 📄 Licencia
-Este proyecto es de uso **educativo** y no cuenta con licencia comercial.
+- **Repositorio GitHub:** [🔗 Enlace](https://github.com/jlomelic/Coderhouse)  
+- **GitHub Pages:** [🔗 Sitio](https://jlomelic.github.io/Coderhouse/index.html)  
+- **Netlify:** [🔗 Sitio en Netlify](https://entrega1-lomeli.netlify.app/.)  
