@@ -9,7 +9,7 @@ Este proyecto es una página web informativa sobre **San José de Gracia, Michoa
 
 ## 🚀 Demo
 🔗 [Ver página publicada en GitHub Pages](https://jlomelic.github.io/Coderhouse/)
-
+Netlify https://entrega1-lomeli.netlify.app/
 
 ---
 
